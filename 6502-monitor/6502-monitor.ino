@@ -30,13 +30,11 @@ void onClock() {
 
 void loop() {
 
-  char output[128];
+  char output[64];
   unsigned long deltaTime = micros() - lastTime;
 
-  char addr_bin[17];
-  addr_bin[16] = '\0';
-  char data_bin[9];
-  addr_bin[8] = '\0';
+  char addr_bin[17]; addr_bin[16] = '\0';
+  char data_bin[9];  addr_bin[8]  = '\0';
   
   if (print) {
 
@@ -54,8 +52,10 @@ void loop() {
       data = (data << 1) + bit;
     }
 
-    char op = digitalRead(READ_WRITE) ? 'r' : 'W';
-    sprintf(output, "ADDR: %s 0x%04X    OP: %c    DATA: %s 0x%02X    FREQ: %lu Hz", addr_bin, address, op, data_bin, data, clockSpeed);
+    char* op = digitalRead(READ_WRITE) ? "r" : "W";
+    char* dir = digitalRead(READ_WRITE) ? "<-" : "->";
+    
+    sprintf(output, "%s %s 0x%02X %s %s 0x%04X @ %lu Hz", op, data_bin, data, dir, addr_bin, address, clockSpeed);
     Serial.println(output);
     print = false;
   }
