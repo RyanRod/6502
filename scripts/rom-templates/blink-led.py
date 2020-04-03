@@ -18,7 +18,7 @@ code = bytearray([
 
 
 # Allocate 32kB of memory (eeprom size)
-rom = code + bytearray([0xea] * 32768 - len(code))
+rom = code + bytearray([0xea] * (32768 - len(code)))
 
 # Start program counter at address 0x8000
 rom[0x7ffc] = 0x00 # lsb
