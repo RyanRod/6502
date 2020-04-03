@@ -33,8 +33,11 @@ void loop() {
   char output[64];
   unsigned long deltaTime = micros() - lastTime;
 
-  char addr_bin[17]; addr_bin[16] = '\0';
-  char data_bin[9];  addr_bin[8]  = '\0';
+  char addr_bin[20];
+  char data_bin[20];
+
+  memset(&addr_bin, 0, sizeof(addr_bin));
+  memset(&data_bin, 0, sizeof(data_bin));
   
   if (print) {
 
