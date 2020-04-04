@@ -1,6 +1,6 @@
 code = bytearray([
   # Location 8000
-  # Set register A and B to output
+  # Set all pins in register B to output
   0xa9, 0xff,        # lda #$ff   
   0x8d, 0x02, 0x60,  # sta $6002
   
