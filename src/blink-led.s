@@ -1,3 +1,7 @@
+;  Simple program to blink leds on the 6502 project
+;  6502 architechture / oldstyle syntax
+;  Assemble with the -dotdir flag to enable dot directives (vasm)
+
   .org $8000        ;set start index -> actual index = virtual index + $8000
 
 reset:              ;sequence loaded on initial start & reset
